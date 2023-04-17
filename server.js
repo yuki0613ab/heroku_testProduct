@@ -17,9 +17,7 @@ wss.on('connection', (socket) => {
   // ビットコイン価格を取得し、WebSocketでクライアントに送信
   const getBitcoinPrice = async () => {
     try {
-      const response = await axios.get(endPoint + path);
-      const bitcoinPrice = response.data;
-      socket.send(JSON.stringify({ price: bitcoinPrice }));
+      socket.send(JSON.stringify({ price: 1000 }));
     } catch (error) {
       console.error('Failed to fetch Bitcoin price:', error);
     }
