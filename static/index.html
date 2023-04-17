@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bitcoin Price</title>
+</head>
+<body>
+  <h1>Bitcoin Price</h1>
+  <p id="bitcoinPrice"></p>
+  <script>
+    // WebSocketをオープン
+    const socket = new WebSocket('ws://localhost:3000');
+
+    // WebSocketメッセージ受信時の処理
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      document.getElementById('bitcoinPrice').textContent = `Price: $${data.price}`;
+    };
+
+    // WebSocket切断時の処理
+    socket.onclose = () => {
+      console.log('WebSocket disconnected');
+    };
+  </script>
+</body>
+</html>
